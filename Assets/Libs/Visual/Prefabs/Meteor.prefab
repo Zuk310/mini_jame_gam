@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3008535804816794487}
   - component: {fileID: 5757479540425630665}
   - component: {fileID: 8137651397176622864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1252808330572921901}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003, y: -0.003, z: 0}
-  m_LocalScale: {x: 4.6881, y: 4.6881, z: 4.6881}
+  m_LocalPosition: {x: 0.003, y: -0.0123, z: 0}
+  m_LocalScale: {x: 4.6881, y: 4.5948067, z: 4.6881}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,13 +75,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: a3e9db92d81c331429e5a09da21ca069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 51.25, y: 53.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  minSize: 3
+  maxSize: 5
