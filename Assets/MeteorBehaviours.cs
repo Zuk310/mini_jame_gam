@@ -39,7 +39,7 @@ public class MeteorBehaviours : MonoBehaviour
         if (collision != null) {
             if (collision.gameObject.name == "Player" || collision.gameObject.name == "Ground")
             {
-                gameManager.meteorDestroyed(this);
+                gameManager.MeteorDestroyed(this);
                 Destroy(gameObject);
             }
         }
