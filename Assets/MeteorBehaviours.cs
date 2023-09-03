@@ -12,20 +12,29 @@ public class MeteorBehaviours : MonoBehaviour
     public const float meteorSpawnLocationRightBound = 7.76f;
     public const float meteorSpawnLocationHeight = 6.61f;
 
-    public GameManager gameManager;
-
-    public float minSize = 3f;
-    public float maxSize = 5f;
+    private GameManager gameManager;
+    private Rigidbody2D rb;
+    private GameObject player;
+    public float minSize = 0.1f;
+    public float maxSize = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         float randomMeteorLocation = Random.Range(meteorSpawnLocationLeftBound, meteorSpawnLocationRightBound);
         var size = Random.Range(minSize, maxSize);
-        this.transform.position = new Vector3(randomMeteorLocation, meteorSpawnLocationHeight, 0);
+        rb.transform.position = new Vector3(randomMeteorLocation, meteorSpawnLocationHeight, 0);
+        rb.velocity = new Vector2(0f, 0f);
         this.transform.localScale = new Vector2(size, size);
-        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-3, 3), Random.Range(0, -5)), ForceMode2D.Impulse);
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-2, 2), Random.Range(0, -1)), ForceMode2D.Impulse);
+    }
+
+    void changeDirection()
+    {
+        // rb.velocity = new Vector2(- rb.velocity.x,rb.velocity.y);
     }
 
     // Update is called once per frame
@@ -37,10 +46,14 @@ public class MeteorBehaviours : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision != null) {
-            if (collision.gameObject.name == "Player" || collision.gameObject.name == "Ground")
+            if (collision.gameObject.tag != "Meteor" )
             {
-                gameManager.meteorDestroyed(this);
+                gameManager.MeteorDestroyed(this);
                 Destroy(gameObject);
+            }
+            else
+            {
+                changeDirection();
             }
         }
     }
